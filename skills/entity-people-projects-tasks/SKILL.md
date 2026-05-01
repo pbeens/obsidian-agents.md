@@ -1,25 +1,25 @@
 ---
-name: wiki-people-projects-tasks
+name: entity-people-projects-tasks
 description: >
-  After wiki-ingest or wiki-history-ingest, consolidate detected people, projects, and open tasks into
-  alias-friendly wiki pages in the dedicated people/ and projects/ folders and roll up tasks into overview views.
+  After vault-ingest or history-ingest, consolidate detected people, projects, and open tasks into
+  alias-friendly vault pages in the dedicated people/ and projects/ folders and roll up tasks into overview views.
 ---
 
-# Wiki People, Projects & Task Consolidation
+# Entity People, Projects & Task Consolidation
 
-**Use this skill immediately after** `wiki-ingest`, `data-ingest`, or `wiki-history-ingest`. It is a post-processing pass.
+**Use this skill immediately after** `vault-ingest`, `data-ingest`, or `history-ingest`. It is a post-processing pass.
 
 ## Purpose
 Turn newly processed material into durable, alias-friendly People and Project pages plus consolidated task overviews, while preserving provenance and avoiding duplicates.
 
 ## Invocation Examples
-- "Run wiki-ingest on _raw/ then apply wiki-people-projects-tasks"
+- "Run vault-ingest on _raw/ then apply entity-people-projects-tasks"
 - "Process raw folder and consolidate people/projects/tasks"
 - "After history ingest, run people/project/task consolidation"
-- "wiki-people-projects-tasks"
+- "entity-people-projects-tasks"
 
 ## Before You Start
-1. Run the appropriate ingest skill first (`wiki-ingest` for _raw/, `wiki-history-ingest codex` for history, etc.).
+1. Run the appropriate ingest skill first (`vault-ingest` for _raw/, `history-ingest codex` for history, etc.).
 2. Read this `AGENTS.md` and current `tasks.md`.
 3. Check `.manifest.json`, `people/`, `projects/`, `Bases/`, and existing task overview files.
 
@@ -41,13 +41,13 @@ Turn newly processed material into durable, alias-friendly People and Project pa
 - The source reference must point to the originating note or file that caused the people page to be created.
 - If no related project is detected, still include the source note under `## Related Notes`.
 - Do not leave a people page without provenance just because there is no related project.
-- When linking the source note, prefer an explicit path-based wikilink or otherwise unambiguous source reference.
+- When linking the source note, prefer an explicit path-based internal link or otherwise unambiguous source reference.
 - Every people page must include `## Overview`, `## Related Projects`, and `## Related Notes`, even when some sections are empty.
 - Every newly created or updated people page must include at least one explicit source reference in `## Related Notes`.
 - The source reference must point to the originating note or file that caused the people page to be created.
 - If no related project is detected, still include the source note under `## Related Notes`.
 - Do not leave a people page without provenance just because there is no related project.
-- When linking the source note, prefer an explicit path-based wikilink or otherwise unambiguous source reference.
+- When linking the source note, prefer an explicit path-based internal link or otherwise unambiguous source reference.
 
 ## Project Rules
 - Prefer creating or updating the page in the `projects/` folder.
@@ -73,7 +73,7 @@ Turn newly processed material into durable, alias-friendly People and Project pa
 
 ## Clean Note Creation Rules
 
-After `wiki-ingest` and `wiki-people-projects-tasks` have reconciled people, projects, and tasks, create a clean final note using the Obsidian Notes Custom GPT style below.
+After `vault-ingest` and `entity-people-projects-tasks` have reconciled people, projects, and tasks, create a clean final note using the Obsidian Notes Custom GPT style below.
 
 ### Clean Note Destination
 
@@ -83,13 +83,13 @@ After `wiki-ingest` and `wiki-people-projects-tasks` have reconciled people, pro
 - Every newly created clean note must begin with YAML frontmatter.
 - Include frontmatter fields such as `created`, `source`, `tags`, and any needed aliases or provenance metadata.
 - Add tags such as `#processed`, `#clipping`, `#from-raw`, plus source URL/date if available.
-- Add wikilinks from the relevant People and/or Project pages to the clean note.
+- Add internal links from the relevant People and/or Project pages to the clean note.
 - When creating the clean note in `Clippings/`, strictly follow the Custom GPT style.
 - Do not embed or copy images from the raw file unless they are essential for understanding; prefer describing image content in text or using a lightweight link instead of embedding the full file to avoid bloat.
 - After the clean note is successfully created and verified, delete the original raw `.md` file and any locally copied images that were only attached to it from `_raw/`.
 - Do not leave raw files or their associated images in `_raw/` long-term.
 - If images from the raw file are no longer referenced anywhere after deletion, note this in the processing summary so the user can optionally run an orphaned-image cleanup later.
-- After the clean note is created, append a numbered list item or wikilink at the very bottom of the current daily note, typically under `## Stuff to Process`.
+- After the clean note is created, append a numbered list item or internal link at the very bottom of the current daily note, typically under `## Stuff to Process`.
 - Do not place the item in the `# ✂️ Clippings` section anymore; keep the daily note entry separate so the user can move it manually later.
 - Use a section-only or end-of-file append for daily-note updates; never rewrite the whole file just to add the new item.
 - Preserve the note's existing UTF-8/Unicode content when editing daily notes; do not round-trip the note through terminal text output.
@@ -98,8 +98,8 @@ After `wiki-ingest` and `wiki-people-projects-tasks` have reconciled people, pro
 
 When the user says "Process raw folder" or a similar short command, run the full chain:
 
-1. `wiki-ingest`
-2. `wiki-people-projects-tasks`
+1. `vault-ingest`
+2. `entity-people-projects-tasks`
 3. clean note creation using the Custom GPT style
 4. delete the raw file and any associated images from `_raw/`
 5. append the new item as a numbered list item to the bottom of today's daily note
@@ -196,7 +196,7 @@ SocialFlywheel
 - Follow kepano/obsidian-skills conventions for:
   - YAML frontmatter (including `aliases`)
   - Callouts
-  - Wikilinks
+  - Internal Links
   - Obsidian Bases syntax
   - Clean, readable Markdown
 
@@ -208,8 +208,8 @@ SocialFlywheel
 
 ## Supported Workflows
 - Forward ingest from `_raw/`
-- Backfill from Codex history via `wiki-history-ingest codex`
-- Any other content routed through obsidian-wiki ingest skills
+- Backfill from Codex history via `history-ingest codex`
+- Any other content routed through obsidian-vault ingest skills
 
 ## Output Expectations
 When finished the agent should report:

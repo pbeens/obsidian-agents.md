@@ -6,7 +6,7 @@
 
 ## Purpose
 
-This vault is a personal Obsidian knowledge wiki. Agents should turn incoming material into clean, linked notes, with canonical People pages, canonical Project pages, and usable task views.
+This vault is a personal Obsidian knowledge base. Agents should turn incoming material into clean, linked notes, with canonical People pages, canonical Project pages, and usable task views.
 
 ## Scope
 
@@ -56,23 +56,23 @@ This vault is a personal Obsidian knowledge wiki. Agents should turn incoming ma
 - Treat entity page names as alias-friendly, with readable canonical titles and variant aliases handled explicitly.
 - Promote cleaned notes out of `_raw/`; do not leave raw imports as the canonical record.
 
-## Wiki Workflow Rules
+## Entity & Ingest Rules
 
-- When the user says "process raw", "process \_raw/", "process raw folder", "ingest raw", or similar short commands, automatically run `wiki-ingest` on the `_raw/` folder followed by the `wiki-people-projects-tasks` skill. Do not ask for confirmation unless there are many files or potential large changes.
+- When the user says "process raw", "process \_raw/", "process raw folder", "ingest raw", or similar short commands, automatically run `vault-ingest` on the `_raw/` folder followed by the `entity-people-projects-tasks` skill. Do not ask for confirmation unless there are many files or potential large changes.
 - When a project note lists related people, ensure each related person has a People page; create any missing pages in `people/_new/` for manual review and update any existing person pages as needed.
-- When linking related people from a project note, use explicit path-based wikilinks into `people/` or `people/_new/` rather than bare name-only links.
-- Use the obsidian-wiki framework as the primary ingest and page-creation engine. It handles `_raw/` processing, delta tracking via `.manifest.json`, entity extraction, merging, wikilinking, and provenance.
-- Always load and respect skills from kepano/obsidian-skills for proper Obsidian Markdown, Bases, wikilinks, aliases, and callouts.
-- After ingest, chain the `wiki-people-projects-tasks` skill to reconcile People pages, Project pages, and task overviews.
-- When creating People or Project pages, prefer the alias-friendly rule already set here. The agent may place pages in `people/` or `projects/` when the entity clearly belongs there, or in root / appropriate project subfolders when obsidian-wiki's natural organization suggests it.
-- Core command for ingest: `Run wiki-ingest on _raw/` followed by applying custom people/project/task consolidation rules.
+- When linking related people from a project note, use explicit path-based internal links into `people/` or `people/_new/` rather than bare name-only links.
+- Use the ingest framework as the primary ingest and page-creation engine. It handles `_raw/` processing, delta tracking via `.manifest.json`, entity extraction, merging, internal linking, and provenance.
+- Always load and respect skills from kepano/obsidian-skills for proper Obsidian Markdown, Bases, internal links, aliases, and callouts.
+- After ingest, chain the `entity-people-projects-tasks` skill to reconcile People pages, Project pages, and task overviews.
+- When creating People or Project pages, prefer the alias-friendly rule already set here. The agent may place pages in `people/` or `projects/` when the entity clearly belongs there, or in root / appropriate project subfolders when the vault's natural organization suggests it.
+- Core command for ingest: `Run vault-ingest on _raw/` followed by applying custom people/project/task consolidation rules.
 - For social media threads (e.g., Twitter/X, Reddit), do not extract or create pages for related people other than the primary poster/author.
 
-## Wiki-Specific Rules
+## Note Promotion Rules
 
 - Drop web clips and raw material into `_raw/`.
-- Agent command: `Process raw folder` or `wiki-ingest` -> clean, link, extract people/projects/tasks -> promote to canonical pages.
-- After ingest, run `wiki-people-projects-tasks` to consolidate alias-friendly people and project pages, roll up open tasks, and create a clean note in `Clippings/` or `Topic Pages/` using the Obsidian Notes Custom GPT instructions.
+- Agent command: `Process raw folder` or `vault-ingest` -> clean, link, extract people/projects/tasks -> promote to canonical pages.
+- After ingest, run `entity-people-projects-tasks` to consolidate alias-friendly people and project pages, roll up open tasks, and create a clean note in `Clippings/` or `Topic Pages/` using the Obsidian Notes Custom GPT instructions.
 - When archiving notes from `Daily Notes/` or `Clippings/`, use `archive-by-created-date` so moves go into `YYYY/MM/` folders after confirming the plan.
 - For transcript files (`.srt` from MacWhisper or `.txt` from Pixel/Google recordings), always use `meeting-transcript-summary` to append an `## AI summary` section to the matching meeting note.
 - The `## AI summary` for a transcript must include extracted action items as `- [ ]` tasks when the transcript contains them; do not collapse them into plain bullets.

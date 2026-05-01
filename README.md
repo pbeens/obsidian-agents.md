@@ -16,18 +16,32 @@ Setting up is quick and easy:
 
 Once configured, your agent will have access to the instructions, skills, and scripts defined in this repository.
 
-## 🧰 Included Skills
+## 🚀 What can I do with this?
 
-This repository also includes a set of specialized skills to extend your agent's capabilities:
+Once configured, you can use natural language to ask your AI agent to perform complex vault maintenance and knowledge management tasks. For example:
 
-- **All Tags Maintenance**: Rebuilds `ALL-TAGS.txt` by scanning the vault for tag occurrences and counts.
-- **Archive by Created Date**: Archives daily notes or clippings into year/month folders (e.g., `YYYY/MM/`) based on their creation date.
-- **Meeting Transcript Summary**: Summarizes meeting transcripts (`.srt` or `.txt`) into meeting notes, extracting action items and decisions.
-- **Morning Update**: Creates a daily briefing note by compiling critical emails, calendar events, and `#today` tasks from Obsidian.
-- **Web Page to Raw**: Captures web pages into `_raw/` as text-first Markdown, expanding hidden sections and preserving tables.
-- **Wiki People, Projects & Tasks**: Consolidates detected entities and open tasks into alias-friendly wiki pages and task overviews.
+- **Morning Briefing**: *"Give me my morning update"* — Compiles critical emails, calendar events, and pending tasks into a single start-of-day note.
+- **Meeting Follow-up**: *"Process the transcript for the 2026-04-14 Team Meeting"* — Summarizes transcripts and updates the matching meeting note (the transcript `.srt` and note `.md` must share the same filename).
+- **Web Archiving**: *"Capture this URL and add it to my vault"* — Saves a webpage as text-first Markdown (expanding hidden sections) and automatically extracts related people and projects.
+- **Knowledge Ingestion**: *"Process my raw folder"* — Ingests new clippings, reconciles people and project pages, and rolls up open tasks.
+- **Vault Maintenance**: *"Rebuild my tag list"* — Scans your entire vault to refresh the `#Tag (count)` inventory in `ALL-TAGS.txt`.
+- **Entity Management**: *"Create a people page for [Name]"* or *"Update the [Project] project page"* — Manages canonical, alias-friendly pages in `people/` and `projects/`, reconciling new info with existing bios and cross-links.
+- **Relationship Extraction**: *"Extract all people and projects from my raw folder"* — Automatically identifies key entities in your clippings and connects them to your knowledge graph.
+- **Note Archiving**: *"Archive my clippings from last month"* — Automatically moves notes into a structured `YYYY/MM/` folder hierarchy based on their creation date.
 
-Check the [`skills/`](./skills/) directory for details on each skill.
+Check the [`skills/`](./skills/) directory for technical details on each specialized workflow.
+
+## 📂 Folder Structure
+
+To keep your vault organized, the agentic workflows utilize the following folder structure:
+
+- **`Daily Notes/`**: Destination for morning briefings and the source for dated archival.
+- **`_raw/`**: A staging "inbox" for rough web clippings and raw imports.
+- **`_transcripts/`**: The default source folder for meeting transcript files (`.srt` or `.txt`).
+- **`people/` & `projects/`**: Where the agent manages canonical entity pages and cross-links.
+- **`Clippings/`** & **`Topic Pages/`**: Destinations for cleaned notes promoted from the `_raw/` folder.
+- **`Bases/`**: Where the agent looks for or creates structured task overviews and database-style views.
+- **`skills/`** & **`scripts/`**: Contains the core logic and automation scripts for the workflows.
 
 ## 📄 License
 
