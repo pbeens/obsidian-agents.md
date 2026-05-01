@@ -2,6 +2,8 @@
 
 Welcome to the **Obsidian Agentic Tasks** repository! This project is a curated collection of configuration files and "skills" designed to empower agentic AI workflows within [Obsidian](https://obsidian.md/).
 
+> **tl;dr:** [Download the ZIP](https://github.com/pbeens/obsidian-agents.md/archive/refs/heads/main.zip), open it, and extract only the **contents** of the internal subfolder (e.g., `obsidian-agents.md-main`) directly into your Obsidian vault root.
+
 ## 📖 Overview
 
 This repository provides the core components needed to turn your Obsidian vault into a powerful workspace for agentic IDEs. By leveraging the `AGENTS.md` file and custom skills, you can streamline complex tasks and enhance your productivity with AI assistance.
