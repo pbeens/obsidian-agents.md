@@ -1,0 +1,10 @@
+# Local maintenance rules
+AGENTS2.md
+
+# Python artifacts
+__pycache__/
+*.pyc
+
+# System files
+.DS_Store
+Thumbs.db
