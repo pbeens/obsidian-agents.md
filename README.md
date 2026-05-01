@@ -48,3 +48,6 @@ To keep your vault organized, the agentic workflows utilize the following folder
 ## 📄 License
 
 This project is licensed under the **MIT License**. For more information, please see the [LICENSE](./LICENSE) file.
+
+---
+*This repository was created with the assistance of Google's [Antigravity](https://antigravity.google/).*
