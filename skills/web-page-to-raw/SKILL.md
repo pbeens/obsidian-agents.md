@@ -13,8 +13,7 @@ Use this skill to turn a web page into a text-first raw note in `_raw/`.
 
 ## Purpose
 
-Capture the page's text content faithfully for later wiki ingestion while avoiding image bloat and
-lost hidden text.
+Capture the page's text content faithfully for later wiki ingestion while avoiding image bloat and lost hidden text.
 
 ## Core Rules
 
@@ -63,5 +62,4 @@ Prefer this structure in the captured note:
 
 ## Output
 
-When this skill runs, the expected result is a Markdown file in `_raw/` containing the page text,
-headings, tables, and visible discussion content, ready for later wiki ingest.
+When this skill runs, the expected result is a Markdown file in `_raw/` containing the page text, headings, tables, and visible discussion content, ready for later wiki ingest.
